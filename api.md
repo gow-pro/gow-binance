@@ -339,6 +339,7 @@ API Key 包括以下两部分
 | middleName         |  汇款人中间名  |     query        |       true      | string   |      |
 | lastName         | 汇款人姓   |   query   |       true      | string   |      |
 | birthDate         | 汇款人生日   |   query    |       true      | string   |      |
+| noteCode         | 备注码,汇款人填写汇款时需要用到；后期用于核对到账情况   |   query    |       true      | string   |      |
      
 
 
@@ -381,81 +382,15 @@ API Key 包括以下两部分
 
 
 
-## 查询订单 - 身份验证
+## 5、查询订单详情 - 
 
-**接口地址** `/openapi/v1/verified/userVerifiedStepFour.do`
-
-
-**请求方式** `POST`
+**接口地址** `/transaction/getOrderDetail`
 
 
-**consumes** `["multipart/form-data"]`
+**请求方式** `get`
 
 
-**produces** `["*/*","application/json"]`
-
-
-**接口描述** ``
-
-**请求参数**
-
-| 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
-| ------------ | -------------------------------- |-----------|--------|----|--- |
-| cardFrontFile         |      证件正面照   |     formData        |       false      | file   |      |
-| cardNo         |      证件号码   |     query        |       true      | string   |      |
-| cardType         |      证件类型 1护照 2身份证  3Employee ID 4 SSS  5 GSIS 6 TIN  7PRC Reg.No. 8 NBI Clearance 9 Senior Citizen ID 10 Student ID 11 Integrated Bar of the Philippines ID(菲律宾籍） 12 OWWA ID 13 OFW ID 14 SEAMAN'S BOOK 15 POSTAL ID  16 DIGITIZED VOTER'S ID 17 LICENSE TO CARRY FIREARMS 18 PHILIPPINE RETIREMENT AUTHORITY ID 19 驾驶证 (菲律宾籍） 20外国人登记证明书 (菲律宾籍）   |     query        |       true      | string   |      |
-| cardValidityPeriod         |      证件有效期   |     query        |       true      | string   |      |
-| handSignFile         |      手持签名照   |     formData        |       false      | file   |      |
-
-
-
-**响应状态**
-
-| 状态码         | 说明                             |    schema                         |
-| ------------ | -------------------------------- |---------------------- |
-| 200         | OK                        |响应结果                          |
-| 201         | Created                        |                          |
-| 401         | Unauthorized                        |                          |
-| 403         | Forbidden                        |                          |
-| 404         | Not Found                        |                          |
-
-
-
-
-**响应参数**
-
-| 参数名称         | 参数说明                             |    类型 |  schema |
-| ------------ | -------------------|-------|----------- |
-| code     |响应代码      |    string   |       |
-| data     |响应数据      |    object   |       |
-| description     |响应描述      |    string   |       |
-            
-
-
-
-
-**响应示例**
-
-
-```json
-{
-	"code": "",
-	"data": {},
-	"description": ""
-}
-```
-
-
-
-## 认证第五步 - 人脸识别
-
-**接口地址** `/openapi/v1/verified/userVerifiedStepFive.do`
-
-
-**请求方式** `POST`
-
-
-**consumes** `["multipart/form-data"]`
+**consumes** `["application/json"]`
 
 
 **produces** `["*/*","application/json"]`
@@ -467,7 +402,8 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-| faceAuthFile         |      人脸识别图片   |     formData        |       false      | file   |      |
+| orderNo         |     订单编号  |     query        |       true      | string   |      |
+| source   | 渠道来源，固定值： binance   |  query        | true  | string   |      |
 
 
 
@@ -485,15 +421,65 @@ API Key 包括以下两部分
 
 
 
+ 
 **响应参数**
 
 | 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 | code     |响应代码      |    string   |       |
-| data     |响应数据      |    object   |       |
+| data     |响应数据      |    object   |    订单信息   |
 | description     |响应描述      |    string   |       |
             
+ 
 
+
+**schema属性说明**
+  
+**用户认证状态信息**
+
+| 参数名称         | 参数说明                             |    类型 |  schema |
+| ------------ | ------------------|--------|----------- |
+| orderNo    |  状态: 0:待提交 1:审核通过 2审核不通过 3待审核 4未认证  |  string   |      |
+|account|  账户（用户邮箱或者第三方唯一标识ID）| string   |      |
+|legalCurrenyName|法币币种名称| string   |      |
+|legalAmount|法币数量| string   |      |
+|currencyAmount|稳定币数量 |string   |      |
+|fee|手续费（收取稳定币手续费）| string   |      |
+|channelFeeRate	|通道费率| string   |      |
+|channelFee|收取的通道费| string   |      |
+|exchRate|实时汇率| string   |      |
+|buyType|入金方式 1微信 2支付宝 3银行卡| string   |      |
+|dateCreate|申请时间| long   |      |
+|applyStatus|申请状态 1待审核 2审核不通过 3待打款（审核通过） 4待放币 5已放币  | string   |      |
+|applyType|兑换类型  1 入金 2出金| string   |      |
+|receiveAccount|收款账号(银行卡账号)| string   |      |
+|receiveName|收款者姓名| string   |      |
+|receiveFirstName|收款人名字| string   |      |
+|receiveMiddleName|收款人中间名| string   |      |
+|receiveLastName|收款人姓氏| string   |      |
+|receiveBirthDate|收款人生日| string   |      |
+|receiveCountry|收款人国家代码| string   |      |
+|receiveProvince|收款人省份| string   |      |
+|receiveCity|收款人城市| string   |      |
+|receiveAddr|收款人地址| string   |      |
+|receiveBankName|收款银行名称| string   |      |
+|receiveBankAddress|收款银行地址| string   |      |
+|bankCountryCode|收款银行的国家代码| string   |      |
+|bankProvince|收款银行省份| string   |      |
+|bankCity|收款银行城市| string   |      |
+|branchName|支行名称| string   |      |
+|bankSwiftCode|银行的 SwiftCode| string   |      |
+|payFirstName|付款人名字| string   |      |
+|payMiddleName|付款人中间名| string   |      |
+|payLastName|付款人姓氏| string   |      |
+|payCountry|付款人国籍| string   |      |
+|payDirthDate|付款人生日| string   |      |
+|noteCode|外币入金收款备注码| string   |      |
+|dateAudit|审核时间| long   |      |
+|deadlinePay|打款截止时间| long   |      |
+|timePay|打款时间| long   |      |
+|timeIssue|放币时间| long   |      |
+|loanType|放币类型： 1手动  2自动| string   |      |
 
 
 
@@ -502,11 +488,16 @@ API Key 包括以下两部分
 
 ```json
 {
-	"code": "",
-	"data": {},
-	"description": ""
+	"code":"000000",
+	"data":{
+                     ...
+	},
+	"description":"成功"
 }
 ```
+
+ 
+ 
 
 
 
