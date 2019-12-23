@@ -74,10 +74,10 @@ API Key 包括以下两部分
 |description| 响应描述  |string  |    |
 
 
-# 查询实名认证状态
+# 出入金、KYC
 
 
-## 查询用户实名认证状态
+## 1、查询用户实名认证状态
 
 **接口地址** `/user/findUserAuthStatus`
 
@@ -150,7 +150,7 @@ API Key 包括以下两部分
 
 
 
-## 跳入GOW的KYC界面
+## 2、跳入GOW的KYC界面
 
 **接口地址** `/user/userKyc`
 
@@ -211,7 +211,7 @@ API Key 包括以下两部分
 
 
 
-## 查询GOW收款信息
+## 3、查询GOW收款信息
 
 **接口地址** `/transaction/getReceiveAccountInfo`
 
@@ -309,7 +309,7 @@ API Key 包括以下两部分
 
 
 
-## 推送入金订单
+## 4、推送入金订单
 
 **接口地址** `/transaction/addChangeApplyOrder`
 
@@ -329,14 +329,16 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
+| orderNo         |      订单编号（长度40位以内，含40）  |     query        |       true      | string   |      |
 | account         |      账户（用户邮箱或者第三方唯一标识ID）   |     query        |       true      | string   |      |
 | source         |    渠道来源,固定为： binance  |     query        |       true      | string   |      |
 | legalAmount         | 入金数量   |     query        |       true      | string   |      |
+| fiatCurrency         | 入金法币类型，固定：php |     query        |       true      | string   |      |
 | countryCode         | 汇款人国家代码 |     query        |       true      | string   |      |
 | firstName         |汇款人名字  |     query        |       true      | string   |      |
-| middleName         |  汇款人中间名  |     query        |       false      | string   |      |
-| lastName         | 汇款人姓   |   query   |       false      | string   |      |
-| birthDate         | 汇款人生日   |   query    |       false      | string   |      |
+| middleName         |  汇款人中间名  |     query        |       true      | string   |      |
+| lastName         | 汇款人姓   |   query   |       true      | string   |      |
+| birthDate         | 汇款人生日   |   query    |       true      | string   |      |
      
 
 
@@ -379,7 +381,7 @@ API Key 包括以下两部分
 
 
 
-## 认证第四步 - 身份验证
+## 查询订单 - 身份验证
 
 **接口地址** `/openapi/v1/verified/userVerifiedStepFour.do`
 
