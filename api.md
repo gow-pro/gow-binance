@@ -500,4 +500,86 @@ API Key 包括以下两部分
  
 
 
+## 4、推送出金订单
+
+**接口地址** `/transaction/addChangeApplySale`
+
+
+**请求方式** `POST`
+
+
+**consumes** `["application/json"]`
+
+
+**produces** `["*/*","application/json"]`
+
+
+**接口描述** ``
+
+**请求参数**
+
+| 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
+| ------------ | -------------------------------- |-----------|--------|----|--- |
+| orderNo         |      订单编号（长度40位以内，含40）  |     query        |       true      | string   |      |
+| account         |      账户（用户邮箱或者第三方唯一标识ID）   |     query        |       true      | string   |      |
+| source         |    渠道来源,固定为： binance  |     query        |       true      | string   |      |
+| currencyAmount         | 出金数量   |     query        |       true      | string   |      |
+| fiatCurrency         | 出金得到的法币类型，固定值：php |     query        |       true      | string   |      |
+| receiveAccount         |收款账号(银行卡账号)|     query        |       true      | string   |      |
+| receiveName         | 收款者姓名 |     query        |       true      | string   |      |
+| receiveFirstName         |收款人名字  |     query        |       true      | string   |      |
+| receiveMiddleName         |  收款人中间名  |     query        |       true      | string   |      |
+| receiveLastName         | 收款人姓氏   |   query   |       true      | string   |      |
+| receiveBirthDate         | 收款人生日   |   query    |       true      | string   |      |
+| receiveCountry         | 收款人国家代码   |   query    |       true      | string   |      |
+| receiveProvince         | 收款人省份   |   query    |       false      | string   |      |
+| receiveCity         | 收款人城市   |   query    |       false      | string   |      |
+| receiveAddr         | 收款人地址   |   query    |       true      | string   |      |
+| receiveBankName         | 收款银行名称   |   query    |       true      | string   |      |
+| receiveBankAddress         | 收款银行地址   |   query    |       true      | string   |      |
+| bankCountryCode         | 收款银行的国家代码   |   query    |       true      | string   |      |
+| bankProvince         | 收款银行省份   |   query    |       true      | string   |      |
+| bankCity         | 收款银行城市   |   query    |       true      | string   |      |
+| branchName         | 收款银行支行名称   |   query    |       true      | string   |      |
+| bankSwiftCode         | 收款银行的 SwiftCode   |   query    |       true      | string   |      |
+     
+
+
+
+**响应状态**
+
+| 状态码         | 说明                             |    schema                         |
+| ------------ | -------------------------------- |---------------------- |
+| 200         | OK                        |响应结果                          |
+| 201         | Created                        |                          |
+| 401         | Unauthorized                        |                          |
+| 403         | Forbidden                        |                          |
+| 404         | Not Found                        |                          |
+
+
+
+
+**响应参数**
+
+| 参数名称         | 参数说明                             |    类型 |  schema |
+| ------------ | -------------------|-------|----------- |
+| code     |响应代码      |    string   |       |
+| data     |响应数据      |    object   |       |
+| description     |响应描述      |    string   |       |
+            
+
+
+
+
+**响应示例**
+
+
+```json
+{
+	"code": "",
+	"data": {},
+	"description": ""
+}
+```
+
 
