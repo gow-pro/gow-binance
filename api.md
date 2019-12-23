@@ -79,7 +79,7 @@ API Key 包括以下两部分
 
 ## 查询用户实名认证状态
 
-**接口地址** `/user/findUserAuthStatus.do`
+**接口地址** `/user/findUserAuthStatus`
 
 
 **请求方式** `GET`
@@ -152,7 +152,7 @@ API Key 包括以下两部分
 
 ## 跳入GOW的KYC界面
 
-**接口地址** `/user/userKyc.do`
+**接口地址** `/user/userKyc`
 
 
 **请求方式** `POST`
@@ -213,7 +213,7 @@ API Key 包括以下两部分
 
 ## 查询GOW收款信息
 
-**接口地址** `/transaction/getReceiveAccountInfo.do`
+**接口地址** `/transaction/getReceiveAccountInfo`
 
 
 **请求方式** `get`
@@ -309,9 +309,9 @@ API Key 包括以下两部分
 
 
 
-## 认证第三步 - 收入信息
+## 推送入金订单
 
-**接口地址** `/openapi/v1/verified/userVerifiedStepThree.do`
+**接口地址** `/transaction/addChangeApplyOrder`
 
 
 **请求方式** `POST`
@@ -329,18 +329,15 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-| companyName         |      公司名称   |     query        |       false      | string   |      |
-| employmentStatus         |      就业状态: 1.在职; 2.个体经营; 3.退休; 4.无业; 5.学生;   |     query        |       true      | string   |      |
-| fundSource         |      资金来源: 1.工资; 2.储蓄; 3.礼物/遗产; 4.营运资金; 5.出售物业; 6.汇款; 7.养老金; 8.补贴; 9.彩票; 10.捐款;   |     query        |       false      | string   |      |
-| income         |      年收入(单位: 美元)   |     query        |       true      | string   |      |
-| incomeSource         |      收入来源: 1.薪水; 2.家庭成员或海外汇款; 3.个人储蓄; 4.其他;   |     query        |       true      | string   |      |
-| incomeSourceOther         |      其他收入来源   |     query        |       false      | string   |      |
-| locale         |      语言   |     query        |       false      | string   |      |
-| natureBusiness         |      行业: 1.专业; 2.家务; 3.私企雇员; 4.政府雇员; 5.创业/企业家; 6.医生; 7.律师; 8.牙医; 9.工程师; 10.建筑师; 11.会计; 12.银行家; 13.运动员; 14.家庭主妇; 15.海外劳工; 99.其他职业;   |     query        |       false      | string   |      |
-| position         |      职位   |     query        |       false      | string   |      |
-    |
-| taxNo         |      税号   |     query        |       false      | string   |      |
-| taxType         |      税号类型: 1.TIN; 2.SSS; 3.GSIS   |     query        |       false      | string   |      |           
+| account         |      账户（用户邮箱或者第三方唯一标识ID）   |     query        |       true      | string   |      |
+| source         |    渠道来源,固定为： binance  |     query        |       true      | string   |      |
+| legalAmount         | 入金数量   |     query        |       true      | string   |      |
+| countryCode         | 汇款人国家代码 |     query        |       true      | string   |      |
+| firstName         |汇款人名字  |     query        |       true      | string   |      |
+| middleName         |  汇款人中间名  |     query        |       false      | string   |      |
+| lastName         | 汇款人姓   |   query   |       false      | string   |      |
+| birthDate         | 汇款人生日   |   query    |       false      | string   |      |
+     
 
 
 
