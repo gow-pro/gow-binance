@@ -85,7 +85,7 @@ API Key 包括以下两部分
 **请求方式** `GET`
 
 
-**consumes** ``
+**consumes**  `["application/json"]`
 
 
 **produces** `["*/*","application/json"]`
