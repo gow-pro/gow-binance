@@ -276,7 +276,7 @@ API Key 包括以下两部分
 |receiveCity|收款人城市| string   |      |
 |receiveAddr|收款人地址| string   |      |
 |receiveBankAddress|收款银行地址| string   |      |
-|bankCountryCode|收款银行的国家| string   |      |
+|bankCountryCode|收款银行的国家代码| string   |      |
 |bankProvince|收款银行省份| string   |      |
 |bankCity|收款银行城市| string   |      |
 |bankSwiftCode|银行的 SwiftCode| string   |      |
@@ -467,8 +467,8 @@ API Key 包括以下两部分
 |bankCountryCode|收款银行的国家代码| string   |      |
 |bankProvince|收款银行省份| string   |      |
 |bankCity|收款银行城市| string   |      |
-|branchName|支行名称| string   |      |
-|bankSwiftCode|银行的 SwiftCode| string   |      |
+|branchName|收款银行支行名称| string   |      |
+|bankSwiftCode|收款银行的 SwiftCode| string   |      |
 |payFirstName|付款人名字| string   |      |
 |payMiddleName|付款人中间名| string   |      |
 |payLastName|付款人姓氏| string   |      |
