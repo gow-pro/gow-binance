@@ -77,9 +77,9 @@ API Key 包括以下两部分
 # 用户认证
 
 
-## 查询用户认证信息
+## 查询用户实名认证状态
 
-**接口地址** `/openapi/v1/verified/queryUserVerified.do`
+**接口地址** `/user/findUserAuthStatus.do`
 
 
 **请求方式** `GET`
@@ -97,6 +97,9 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
+| account         |      出生地   |     query        |       true      | string   |      |
+| source         |      出生日期   |     query        |       true      | string   |      |
+
 
 
 
