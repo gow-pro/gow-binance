@@ -97,8 +97,8 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-| account         |      出生地   |     query        |       true      | string   |      |
-| source         |      出生日期   |     query        |       true      | string   |      |
+| account         |      账户（用户邮箱或者第三方唯一标识ID）   |     query        |       true      | string   |      |
+| source         |      渠道来源，固定值： binance   |     query        |       true      | string   |      |
 
 
 
@@ -135,47 +135,9 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | ------------------|--------|----------- |
-| birthAddr         |     出生地      |  string   |      |
-| birthDate         |     出生日期(yyyy-MM-dd)      |  string   |      |
-| cardFrontServerUrl         |     证件正面照服务器URL      |  string   |      |
-| cardFrontUrl         |     证件正面照URL      |  string   |      |
-| cardNo         |     证件号码      |  string   |      |
-| cardStatus         |     状态: 1.未认证; 2.待审核; 3.审核不通过; 4.已认证; 5.复审;      |  string   |      |
-| cardType         |     证件类型 1护照 2身份证  3Employee ID 4 SSS  5 GSIS 6 TIN  7PRC Reg.No. 8 NBI Clearance 9 Senior Citizen ID 10 Student ID 11 Integrated Bar of the Philippines ID(菲律宾籍） 12 OWWA ID 13 OFW ID 14 SEAMAN'S BOOK 15 POSTAL ID  16 DIGITIZED VOTER'S ID 17 LICENSE TO CARRY FIREARMS 18 PHILIPPINE RETIREMENT AUTHORITY ID 19 驾驶证 (菲律宾籍） 20外国人登记证明书 (菲律宾籍）      |  string   |      |
-| cardValidityPeriod         |     证件有效期(yyyy-MM-dd)      |  string   |      |
-| companyName         |     公司名称      |  string   |      |
-| countryCode         |     国家代码      |  string   |      |
-| currentStep         |     当前步骤: 1.第一步; 2.第二步; 3.第三步; 4.第四步;      |  string   |      |
-| employmentStatus         |     就业状态: 1.在职; 2.个体经营; 3.退休; 4.无业; 5.学生;      |  string   |      |
-| faceAuthUrl         |     人脸识别图片url      |  string   |      |
-| firstName         |     名字      |  string   |      |
-| fundSource         |     资金来源: 1.工资; 2.储蓄; 3.礼物/遗产; 4.营运资金; 5.出售物业; 6.汇款; 7.养老金; 8.补贴; 9.彩票; 10.捐款;      |  string   |      |
-| handSignServerUrl         |     手持签名照服务器URL      |  string   |      |
-| handSignUrl         |     手持签名照URL      |  string   |      |
-| id         |     主键ID      |  string   |      |
-| income         |     年收入(单位: 美元)      |  string   |      |
-| incomeSource         |     收入来源: 1.薪水; 2.家庭成员或海外汇款; 3.个人储蓄; 4.其他;      |  string   |      |
-| incomeSourceOther         |     其他收入来源      |  string   |      |
-| isIdentical         |     永久居住地址是否与现居住地址一致: 1. 是; 2. 否;      |  string   |      |
-| lastName         |     姓氏      |  string   |      |
-| natureBusiness         |     行业: 1.专业; 2.家务; 3.私企雇员; 4.政府雇员; 5.创业/企业家; 6.医生; 7.律师; 8.牙医; 9.工程师; 10.建筑师; 11.会计; 12.银行家; 13.运动员; 14.家庭主妇; 15.海外劳工; 99.其他职业;      |  string   |      |
-| permanentAddr         |     永久居住详细地址      |  string   |      |
-| permanentCity         |     永久居住城市      |  string   |      |
-| permanentCountry         |     永久居住国家      |  string   |      |
-| permanentPostcode         |     永久居住邮政编码      |  string   |      |
-| permanentProvince         |     永久居住省份      |  string   |      |
-| position         |     职位      |  string   |      |
-| residenceAddr         |     现居住详细地址      |  string   |      |
-| residenceCity         |     现居住城市      |  string   |      |
-| residenceCountry         |     现居住国家      |  string   |      |
-| residencePostcode         |     现居住邮政编码      |  string   |      |
-| residenceProvince         |     现居住省份      |  string   |      |
-| sex         |     性别      |  string   |      |
-| taxNo         |     税号      |  string   |      |
-| taxType         |     税号类型: 1.TIN; 2.SSS; 3.GSIS      |  string   |      |
-| userId         |     用户ID      |  string   |      |
-| verifiedDesc         |     审核描述--中文      |  string   |      |
-| verifiedEnDesc         |     审核描述--英文      |  string   |      |
+
+| cardStatus         |     状态: 0:待提交 1:审核通过 2审核不通过 3待审核 4未认证     |  string   |      |
+
             
 
 
@@ -188,47 +150,7 @@ API Key 包括以下两部分
 {
 	"code": "",
 	"data": {
-		"birthAddr": "",
-		"birthDate": "",
-		"cardFrontServerUrl": "",
-		"cardFrontUrl": "",
-		"cardNo": "",
-		"cardStatus": "",
-		"cardType": "",
-		"cardValidityPeriod": "",
-		"companyName": "",
-		"countryCode": "",
-		"currentStep": "",
-		"employmentStatus": "",
-		"faceAuthUrl": "",
-		"firstName": "",
-		"fundSource": "",
-		"handSignServerUrl": "",
-		"handSignUrl": "",
-		"id": "",
-		"income": "",
-		"incomeSource": "",
-		"incomeSourceOther": "",
-		"isIdentical": "",
-		"lastName": "",
-		"natureBusiness": "",
-		"permanentAddr": "",
-		"permanentCity": "",
-		"permanentCountry": "",
-		"permanentPostcode": "",
-		"permanentProvince": "",
-		"position": "",
-		"residenceAddr": "",
-		"residenceCity": "",
-		"residenceCountry": "",
-		"residencePostcode": "",
-		"residenceProvince": "",
-		"sex": "",
-		"taxNo": "",
-		"taxType": "",
-		"userId": "",
-		"verifiedDesc": "",
-		"verifiedEnDesc": ""
+		"cardStatus": "1"
 	},
 	"description": ""
 }
