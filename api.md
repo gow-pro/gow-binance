@@ -74,7 +74,7 @@ API Key 包括以下两部分
 |description| 响应描述  |string  |    |
 
 
-# 用户认证
+# 查询实名认证状态
 
 
 ## 查询用户实名认证状态
@@ -102,8 +102,6 @@ API Key 包括以下两部分
 
 
 
-
-
 **响应状态**
 
 | 状态码         | 说明                             |    schema                         |
@@ -112,8 +110,6 @@ API Key 包括以下两部分
 | 401         | Unauthorized                        |                          |
 | 403         | Forbidden                        |                          |
 | 404         | Not Found                        |                          |
-
-
 
 
 **响应参数**
@@ -126,10 +122,9 @@ API Key 包括以下两部分
             
 
 
-
 **schema属性说明**
   
-**用户认证信息**
+**用户认证状态信息**
 
 | 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | ------------------|--------|----------- |
@@ -150,7 +145,6 @@ API Key 包括以下两部分
 	"description": ""
 }
 ```
-
 
 
 
@@ -203,9 +197,6 @@ API Key 包括以下两部分
 | description     |响应描述      |    string   |       |
             
 
-
-
-
 **响应示例**
 
 
@@ -219,12 +210,13 @@ API Key 包括以下两部分
 
 
 
-## 认证第二步 - 地址信息
 
-**接口地址** `/openapi/v1/verified/userVerifiedStepTwo.do`
+## 查询GOW收款信息
+
+**接口地址** `/transaction/getReceiveAccountInfo.do`
 
 
-**请求方式** `POST`
+**请求方式** `get`
 
 
 **consumes** `["application/json"]`
@@ -239,18 +231,7 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-| isIdentical         |      永久居住地址是否与现居住地址一致: 1.是; 2.否;   |     query        |       true      | string   |      |
-| locale         |      语言   |     query        |       false      | string   |      |
-| permanentAddr         |      永久居住详细地址   |     query        |       false      | string   |      |
-| permanentCity         |      永久居住城市   |     query        |       false      | string   |      |
-| permanentCountry         |      永久居住国家   |     query        |       false      | string   |      |
-| permanentPostcode         |      永久居住邮政编码   |     query        |       false      | string   |      |
-| permanentProvince         |      永久居住省份   |     query        |       false      | string   |      |
-| residenceAddr         |      现居住详细地址   |     query        |       true      | string   |      |
-| residenceCity         |      现居住城市   |     query        |       true      | string   |      |
-| residenceCountry         |      现居住国家   |     query        |       true      | string   |      |
-| residencePostcode         |      现居住邮政编码   |     query        |       true      | string   |      |
-| residenceProvince         |      现居住省份   |     query        |       true      | string   |      |
+| source   | 渠道来源，固定值： binance   |  query        | true  | string   |      |
 
 
 
@@ -272,21 +253,57 @@ API Key 包括以下两部分
 | 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 | code     |响应代码      |    string   |       |
-| data     |响应数据      |    object   |       |
+| data     |响应数据      |    object   |    收款信息   |
 | description     |响应描述      |    string   |       |
             
+ 
 
 
+**schema属性说明**
+  
+**用户认证状态信息**
 
+| 参数名称         | 参数说明                             |    类型 |  schema |
+| ------------ | ------------------|--------|----------- |
+| cardStatus    |  状态: 0:待提交 1:审核通过 2审核不通过 3待审核 4未认证  |  string   |      |
+|receiveBankName|收款银行名称| string   |      |
+|receiveAccount|收款账号(银行卡账号)| string   |      |
+|receiveFirstName|收款人名字| string   |      |
+|receiveMiddleName|收款人中间名 |string   |      |
+|receiveLastName|收款人姓氏| string   |      |
+|receiveCountry	|收款人国家代码| string   |      |
+|receiveProvince|收款人省份| string   |      |
+|receiveCity|收款人城市| string   |      |
+|receiveAddr|收款人地址| string   |      |
+|receiveBankAddress|收款银行地址| string   |      |
+|bankCountryCode|收款银行的国家| string   |      |
+|bankProvince|收款银行省份| string   |      |
+|bankCity|收款银行城市| string   |      |
+|bankSwiftCode|银行的 SwiftCode| string   |      |
 
 **响应示例**
 
 
 ```json
 {
-	"code": "",
-	"data": {},
-	"description": ""
+	"code":"000000",
+	"data":{
+		"receiveCountry":"CN",
+		"receiveBankName":"UNINE Bank ",
+		"bankSwiftCode":”UA125”,
+		"bankProvince":"hunan",
+		"receiveFirstName":"ETRANSS REMITTANCE INTERNATIONAL CORP.",
+		"receiveAddr":"futianqushawei",
+		"receiveProvince":"guangdong",
+		"bankCity":"shenzhen",
+		"receiveMiddleName":"john",
+		"receiveBankAddress":"fengtianlu18xiang9hao",
+		"bankCountryCode":"PH",
+		"receiveCity":"shenzhen",
+		"receiveAccount":"888888888",
+		"receiveLastName":"Green"
+	},
+	"description":"成功"
 }
 ```
 
