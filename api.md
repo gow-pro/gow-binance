@@ -121,7 +121,7 @@ API Key 包括以下两部分
 | 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 | code     |响应代码      |    string   |       |
-| data     |响应数据      |    用户认证信息   |   用户认证信息    |
+| data     |响应数据      |    Object   |   用户认证状态信息    |
 | description     |响应描述      |    string   |       |
             
 
@@ -138,8 +138,6 @@ API Key 包括以下两部分
             
 
 
-
-
 **响应示例**
 
 
@@ -154,9 +152,13 @@ API Key 包括以下两部分
 ```
 
 
-## 认证第一步 - 个人信息
 
-**接口地址** `/openapi/v1/verified/userVerifiedStepOne.do`
+
+
+
+## 跳入GOW的KYC界面
+
+**接口地址** `/user/userKyc.do`
 
 
 **请求方式** `POST`
@@ -174,13 +176,8 @@ API Key 包括以下两部分
 
 | 参数名称         | 参数说明     |     请求类型 |  是否必须      |  数据类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-| birthAddr         |      出生地   |     query        |       true      | string   |      |
-| birthDate         |      出生日期   |     query        |       true      | string   |      |
-| countryCode         |      国家代码   |     query        |       true      | string   |      |
-| firstName         |      名字   |     query        |       true      | string   |      |
-| lastName         |      姓氏   |     query        |       true      | string   |      |
-| locale         |      语言   |     query        |       false      | string   |      |
-| sex         |      性别: 0.保密; 1.男; 2.女;   |     query        |       true      | string   |      |
+| account  | 账户（用户邮箱或者第三方唯一标识ID） |  query  | true | string   |      |
+| source   | 渠道来源，固定值： binance   |  query        | true  | string   |      |
             
 
 
