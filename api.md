@@ -150,19 +150,12 @@ API Key 包括以下两部分
 
 
 
-## 2、跳入GOW的KYC界面
+## 2、KYC认证页面
 
-**接口地址** `/user/userKyc`
-
-
-**请求方式** `POST`
+**接口地址** `/user/userKyc.html`
 
 
-**consumes** `["application/json"]`
-
-
-**produces** `["*/*","application/json"]`
-
+**请求方式** `GET`
 
 **接口描述** ``
 
@@ -172,43 +165,6 @@ API Key 包括以下两部分
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 | account  | 账户（用户邮箱或者第三方唯一标识ID） |  query  | true | string   |      |
 | source   | 渠道来源，固定值： binance   |  query        | true  | string   |      |
-            
-
-
-**响应状态**
-
-| 状态码         | 说明                             |    schema                         |
-| ------------ | -------------------------------- |---------------------- |
-| 200         | OK                        |响应结果                          |
-| 201         | Created                        |                          |
-| 401         | Unauthorized                        |                          |
-| 403         | Forbidden                        |                          |
-| 404         | Not Found                        |                          |
-
-
-
-
-**响应参数**
-
-| 参数名称         | 参数说明                             |    类型 |  schema |
-| ------------ | -------------------|-------|----------- |
-| code     |响应代码      |    string   |       |
-| data     |响应数据      |    object   |       |
-| description     |响应描述      |    string   |       |
-            
-
-**响应示例**
-
-
-```json
-{
-	"code": "",
-	"data": {},
-	"description": ""
-}
-```
-
-
 
 
 ## 3、查询GOW收款信息
